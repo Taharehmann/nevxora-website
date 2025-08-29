@@ -1,5 +1,5 @@
 import { Mail, Phone, MapPin } from "lucide-react";
-import nevxoraLogo from "@/assets/nevxora-logo.png";
+import nevxoraLogo from "@/assets/nevxora-logo-main.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -26,7 +26,7 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <img src={nevxoraLogo} alt="Nevxora Logo" className="h-8 w-8" />
+              <img src={nevxoraLogo} alt="Nevxora Logo" className="h-10 w-auto" />
               <span className="text-xl font-bold gradient-text">Nevxora</span>
             </div>
             <p className="text-sm text-muted-foreground font-medium">

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import nevxoraLogo from "@/assets/nevxora-logo-main.png";
+import nevxoraLogo from "@/assets/nevxora-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,7 +20,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <img src={nevxoraLogo} alt="Nevxora Logo" className="h-10 w-auto" />
+            <img src={nevxoraLogo} alt="Nevxora Logo" className="h-8 w-8" />
             <span className="text-xl font-bold gradient-text">Nevxora</span>
           </div>
 

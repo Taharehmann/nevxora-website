@@ -8,7 +8,8 @@ const Footer = () => {
     "Web Development",
     "Mobile App Development", 
     "AI & Machine Learning",
-    "E-Commerce Solutions"
+    "E-Commerce Solutions",
+    "Staff Augmentation"
   ];
 
   const scrollToSection = (sectionId: string) => {

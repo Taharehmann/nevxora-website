@@ -1,4 +1,4 @@
-import { Code, Smartphone, Brain, ShoppingCart, CheckCircle } from "lucide-react";
+import { Code, Smartphone, Brain, ShoppingCart, Users, CheckCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const ServicesSection = () => {
@@ -46,6 +46,17 @@ const ServicesSection = () => {
         "Inventory Management",
         "Customer Support"
       ]
+    },
+    {
+      icon: Users,
+      title: "Staff Augmentation",
+      description: "Skilled developers and technical professionals to seamlessly integrate with your existing team and accelerate project delivery.",
+      features: [
+        "Vetted Developers",
+        "Flexible Engagement",
+        "Domain Expertise",
+        "Seamless Integration"
+      ]
     }
   ];
 
@@ -64,7 +75,7 @@ const ServicesSection = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {services.map((service, index) => (
             <Card 
               key={index} 

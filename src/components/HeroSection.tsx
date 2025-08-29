@@ -1,4 +1,4 @@
-import { Code, Smartphone, Brain, ShoppingCart, ChevronRight } from "lucide-react";
+import { Code, Smartphone, Brain, ShoppingCart, Users, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
@@ -23,6 +23,11 @@ const HeroSection = () => {
       icon: ShoppingCart,
       title: "E-Commerce",
       description: "Complete online stores"
+    },
+    {
+      icon: Users,
+      title: "Staff Augmentation",
+      description: "Skilled developer teams"
     }
   ];
 
@@ -62,7 +67,7 @@ const HeroSection = () => {
           </div>
 
           {/* Service Icons */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-12 max-w-5xl mx-auto">
             {services.map((service, index) => (
               <Card key={index} className="p-6 bg-card/50 backdrop-blur border-border/50 hover:bg-card/80 transition-all duration-300 hover:shadow-glow">
                 <div className="flex flex-col items-center text-center space-y-3">

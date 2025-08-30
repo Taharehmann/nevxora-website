@@ -1,7 +1,27 @@
 import { Code, Smartphone, Brain, ShoppingCart, Users, CheckCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { useEffect, useRef } from "react";
 
 const ServicesSection = () => {
+  const carouselRef = useRef<any>(null);
+
+  // Auto-scroll functionality
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const interval = setInterval(() => {
+      if (carousel.canScrollNext()) {
+        carousel.scrollNext();
+      } else {
+        carousel.scrollTo(0);
+      }
+    }, 3000); // Auto-scroll every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   const services = [
     {
       icon: Code,
@@ -74,42 +94,56 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {services.map((service, index) => (
-            <Card 
-              key={index} 
-              className="bg-card/50 backdrop-blur border-border/50 hover:bg-card/80 transition-all duration-300 hover:shadow-card group"
-            >
-              <CardHeader className="pb-4">
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="p-3 rounded-lg bg-gradient-primary group-hover:scale-110 transition-transform duration-300">
-                    <service.icon className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <CardTitle className="text-xl font-bold text-foreground">
-                    {service.title}
-                  </CardTitle>
-                </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  {service.description}
-                </p>
-              </CardHeader>
-              
-              <CardContent>
-                <div className="space-y-3">
-                  <h4 className="font-semibold text-primary mb-3">Key Features:</h4>
-                  <div className="grid grid-cols-2 gap-2">
-                    {service.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center space-x-2">
-                        <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">{feature}</span>
+        {/* Services Carousel */}
+        <div className="relative max-w-6xl mx-auto">
+          <Carousel
+            ref={carouselRef}
+            className="w-full"
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {services.map((service, index) => (
+                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <Card 
+                    className="h-full bg-card/50 backdrop-blur border-border/50 hover:bg-card/80 transition-all duration-300 hover:shadow-card group"
+                  >
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center space-x-4 mb-4">
+                        <div className="p-3 rounded-lg bg-gradient-primary group-hover:scale-110 transition-transform duration-300">
+                          <service.icon className="w-6 h-6 text-primary-foreground" />
+                        </div>
+                        <CardTitle className="text-xl font-bold text-foreground">
+                          {service.title}
+                        </CardTitle>
                       </div>
-                    ))}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                      <p className="text-muted-foreground leading-relaxed">
+                        {service.description}
+                      </p>
+                    </CardHeader>
+                    
+                    <CardContent>
+                      <div className="space-y-3">
+                        <h4 className="font-semibold text-primary mb-3">Key Features:</h4>
+                        <div className="grid grid-cols-2 gap-2">
+                          {service.features.map((feature, featureIndex) => (
+                            <div key={featureIndex} className="flex items-center space-x-2">
+                              <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                              <span className="text-sm text-muted-foreground">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex -left-12 lg:-left-16" />
+            <CarouselNext className="hidden md:flex -right-12 lg:-right-16" />
+          </Carousel>
         </div>
       </div>
     </section>

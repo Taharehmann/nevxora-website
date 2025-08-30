@@ -16,7 +16,7 @@ const ServicesSection = () => {
       } else {
         api.scrollTo(0);
       }
-    }, 3000); // Auto-scroll every 3 seconds
+    }, 2000); // Auto-scroll every 2 seconds
 
     return () => clearInterval(interval);
   }, [api]);

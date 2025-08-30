@@ -1,6 +1,7 @@
 import { Code, Smartphone, Brain, ShoppingCart, Users, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import nevxoraLogo from "@/assets/nevxora-logo.png";
 
 const HeroSection = () => {
   const services = [
@@ -54,8 +55,11 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 lg:px-8 py-20 relative z-10">
         <div className="text-center max-w-5xl mx-auto">
           {/* Brand Identity */}
-          <div className="mb-8">
-            <h1 className="text-6xl md:text-8xl font-bold mb-4">
+          <div className="mb-8 flex flex-col items-center">
+            <div className="mb-4">
+              <img src={nevxoraLogo} alt="Nevxora Logo" className="h-24 w-24 md:h-32 md:w-32" />
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">
               <span className="gradient-text">Nevxora</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground font-medium">

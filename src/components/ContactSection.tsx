@@ -113,15 +113,6 @@ const ContactSection = () => {
               ))}
             </div>
 
-            {/* CTA */}
-            <Card className="bg-card/50 backdrop-blur border-border/50 hover:bg-card/80 transition-all duration-300">
-              <CardContent className="p-6 text-center">
-                <CardTitle className="text-lg mb-3">Ready to build something amazing?</CardTitle>
-                <Button variant="gradient">
-                  Start Your Project →
-                </Button>
-              </CardContent>
-            </Card>
           </div>
 
           {/* Contact Form */}

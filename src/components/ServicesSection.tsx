@@ -1,26 +1,25 @@
 import { Code, Smartphone, Brain, ShoppingCart, Users, CheckCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { useEffect, useRef } from "react";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
+import { useEffect, useState } from "react";
 
 const ServicesSection = () => {
-  const carouselRef = useRef<any>(null);
+  const [api, setApi] = useState<CarouselApi>();
 
   // Auto-scroll functionality
   useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
+    if (!api) return;
 
     const interval = setInterval(() => {
-      if (carousel.canScrollNext()) {
-        carousel.scrollNext();
+      if (api.canScrollNext()) {
+        api.scrollNext();
       } else {
-        carousel.scrollTo(0);
+        api.scrollTo(0);
       }
     }, 3000); // Auto-scroll every 3 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [api]);
 
   const services = [
     {
@@ -97,7 +96,7 @@ const ServicesSection = () => {
         {/* Services Carousel */}
         <div className="relative max-w-6xl mx-auto">
           <Carousel
-            ref={carouselRef}
+            setApi={setApi}
             className="w-full"
             opts={{
               align: "start",

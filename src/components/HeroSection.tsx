@@ -39,8 +39,19 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen pt-16 flex items-center">
-      <div className="container mx-auto px-4 lg:px-8 py-20">
+    <section 
+      id="hero" 
+      className="min-h-screen pt-16 flex items-center relative"
+      style={{
+        backgroundImage: `url('/lovable-uploads/7d706b44-e164-4a0c-9e3b-efa7f0302bbf.png')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-background/30 backdrop-blur-sm"></div>
+      <div className="container mx-auto px-4 lg:px-8 py-20 relative z-10">
         <div className="text-center max-w-5xl mx-auto">
           {/* Brand Identity */}
           <div className="mb-8">

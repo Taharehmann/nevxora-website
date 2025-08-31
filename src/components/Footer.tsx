@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 import nevxoraLogo from "@/assets/nevxora-logo.png";
 
 const Footer = () => {
@@ -91,12 +92,12 @@ const Footer = () => {
               © {currentYear} Nevxora. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <button 
-                onClick={() => scrollToSection("about")}
+              <Link 
+                to="/privacy-policy"
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 Privacy Policy
-              </button>
+              </Link>
               <button 
                 onClick={() => scrollToSection("about")}
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"

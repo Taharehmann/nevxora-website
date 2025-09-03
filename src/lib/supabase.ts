@@ -26,6 +26,23 @@ export const submitContactForm = async (formData: {
   }
 };
 
+export default async function handler(req, res) {
+  if (req.method === 'POST') {
+    // ✅ TEST INSERT
+    const { data, error } = await supabase
+      .from('contacts')
+      .insert([{ name: 'Test User', email: 'test@test.com', message: 'Hello!' }]);
+
+    console.log("✅ Test insert result:", data);
+    console.log("❌ Test insert error:", error);
+
+    return res.status(200).json({ data, error });
+  }
+
+  res.status(405).json({ error: 'Method not allowed' });
+}
+
+
 // Newsletter subscription (if needed)
 export const subscribeToNewsletter = async (email: string) => {
   try {

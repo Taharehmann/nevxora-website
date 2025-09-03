@@ -27,12 +27,12 @@ const ContactSection = () => {
 
     try {
       await submitContactForm(formData);
-      
+
       toast({
         title: "Message Sent!",
         description: "We'll get back to you within 24 hours.",
       });
-      
+
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       toast({
@@ -49,19 +49,19 @@ const ContactSection = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "hello@nevxora.com",
-      href: "mailto:hello@nevxora.com"
+      value: "info@nevxora.com",
+      href: "mailto:info@nevxora.com"
     },
     {
       icon: Phone,
-      label: "Phone", 
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567"
+      label: "Phone",
+      value: "+92  3229657649",
+      href: "tel:+92 3229657649"
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "Remote & Global",
+      value: "Islamabad | Pakistan",
       href: null
     }
   ];
@@ -85,7 +85,7 @@ const ContactSection = () => {
             <div>
               <h3 className="text-2xl font-bold mb-6">Let's Start a Conversation</h3>
               <p className="text-muted-foreground leading-relaxed mb-8">
-                We're here to help you transform your ideas into reality. Reach out to us 
+                We're here to help you transform your ideas into reality. Reach out to us
                 and let's discuss how we can accelerate your digital transformation journey.
               </p>
             </div>
@@ -99,7 +99,7 @@ const ContactSection = () => {
                   <div>
                     <p className="text-sm text-muted-foreground">{info.label}</p>
                     {info.href ? (
-                      <a 
+                      <a
                         href={info.href}
                         className="text-foreground font-medium hover:text-primary transition-colors"
                       >
@@ -155,8 +155,8 @@ const ContactSection = () => {
                     className="bg-background/50 border-border resize-none"
                   />
                 </div>
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   disabled={isSubmitting}
                   variant="gradient"
                   className="w-full"

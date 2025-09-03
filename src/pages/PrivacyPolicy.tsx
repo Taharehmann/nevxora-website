@@ -5,8 +5,8 @@ const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 lg:px-8 py-8">
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className="inline-flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -15,13 +15,13 @@ const PrivacyPolicy = () => {
 
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-8 gradient-text">Privacy Policy</h1>
-          
+
           <div className="prose prose-slate dark:prose-invert max-w-none space-y-8">
             <section>
               <p className="text-muted-foreground mb-6">
                 <strong>Last updated:</strong> {new Date().toLocaleDateString()}
               </p>
-              
+
               <p className="text-foreground leading-relaxed">
                 At Nevxora ("we," "our," or "us"), we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
               </p>
@@ -29,7 +29,7 @@ const PrivacyPolicy = () => {
 
             <section>
               <h2 className="text-2xl font-semibold mb-4 text-foreground">Information We Collect</h2>
-              
+
               <h3 className="text-xl font-medium mb-3 text-foreground">Personal Information</h3>
               <p className="text-foreground leading-relaxed mb-4">
                 We may collect personal information that you voluntarily provide to us, including:
@@ -137,9 +137,9 @@ const PrivacyPolicy = () => {
                 If you have any questions about this Privacy Policy or our privacy practices, please contact us:
               </p>
               <div className="bg-muted/50 p-4 rounded-lg">
-                <p className="text-foreground"><strong>Email:</strong> privacy@nevxora.com</p>
-                <p className="text-foreground"><strong>Phone:</strong> +1 (555) 123-4567</p>
-                <p className="text-foreground"><strong>Address:</strong> Remote & Global Operations</p>
+                <p className="text-foreground"><strong>Email:</strong> info@nevxora.com</p>
+                <p className="text-foreground"><strong>Phone:</strong> +92 3229657649</p>
+                <p className="text-foreground"><strong>Address:</strong> Islamabad | Pakistan</p>
               </div>
             </section>
           </div>

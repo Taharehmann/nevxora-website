@@ -7,7 +7,7 @@ const Footer = () => {
 
   const services = [
     "Web Development",
-    "Mobile App Development", 
+    "Mobile App Development",
     "AI & Machine Learning",
     "E-Commerce Solutions",
     "Staff Augmentation"
@@ -44,7 +44,7 @@ const Footer = () => {
             <ul className="space-y-2">
               {services.map((service, index) => (
                 <li key={index}>
-                  <button 
+                  <button
                     onClick={() => scrollToSection("services")}
                     className="text-muted-foreground hover:text-primary transition-colors text-left"
                   >
@@ -61,25 +61,25 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-primary" />
-                <a 
-                  href="mailto:hello@nevxora.com"
+                <a
+                  href="mailto:info@nevxora.com"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  hello@nevxora.com
+                  info@nevxora.com
                 </a>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-primary" />
-                <a 
-                  href="tel:+15551234567"
+                <a
+                  href="tel:+92 3229657649"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  +1 (555) 123-4567
+                  +92 3229657649
                 </a>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-4 h-4 text-primary" />
-                <span className="text-muted-foreground">Remote & Global</span>
+                <span className="text-muted-foreground">Islamabad | Pakistan</span>
               </div>
             </div>
           </div>
@@ -92,19 +92,19 @@ const Footer = () => {
               © {currentYear} Nevxora. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <Link 
+              <Link
                 to="/privacy-policy"
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 Privacy Policy
               </Link>
-              <button 
+              <button
                 onClick={() => scrollToSection("about")}
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 Terms of Service
               </button>
-              <button 
+              <button
                 onClick={() => scrollToSection("contact")}
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
               >

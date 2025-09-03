@@ -14,17 +14,22 @@ export const submitContactForm = async (formData: {
   message: string;
 }) => {
   try {
-    // In a real app, this would insert into a Supabase table
-    // For demo, we'll simulate the API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Simulate successful submission
-    return { success: true, message: 'Message sent successfully!' };
+    const { data, error } = await supabase
+      .from("contacts") // 👈 make sure this matches your table name
+      .insert([formData]);
+
+    if (error) {
+      console.error("❌ Error inserting contact form:", error);
+      throw new Error(error.message);
+    }
+
+    return { success: true, message: "Message sent successfully!", data };
   } catch (error) {
-    console.error('Error submitting form:', error);
-    throw new Error('Failed to send message. Please try again.');
+    console.error("Error submitting form:", error);
+    throw new Error("Failed to send message. Please try again.");
   }
 };
+
 
 
 // Newsletter subscription (if needed)

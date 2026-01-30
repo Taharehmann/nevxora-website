@@ -32,7 +32,13 @@
     animation: logo-spin infinite 20s linear;
   }
 }
-
+@media (max-width: 768px) {
+  .hero-section {
+    background-size: contain;
+    background-position: top center;
+    min-height: 60vh;
+  }
+}
 .card {
   padding: 2em;
 }

@@ -1,6 +1,7 @@
 import { Code, Smartphone, Brain, ShoppingCart, Users, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import "src/App.css";
 
 const HeroSection = () => {
   const services = [

@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { submitContactForm } from "@/lib/supabase";
+import AnimatedSection from "@/components/AnimatedSection";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -67,23 +68,22 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gradient-secondary">
+    <section id="contact" className="py-12 sm:py-16 md:py-20 bg-gradient-secondary">
       <div className="container mx-auto px-4 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+        <AnimatedSection className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
             Get in <span className="gradient-text">Touch</span>
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
             Ready to build something amazing? Let's discuss your project and bring your vision to life.
           </p>
-        </div>
+        </AnimatedSection>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Information */}
-          <div className="space-y-8">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
+          <AnimatedSection delay={100}>
+            <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold mb-6">Let's Start a Conversation</h3>
+              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Let's Start a Conversation</h3>
               <p className="text-muted-foreground leading-relaxed mb-8">
                 We're here to help you transform your ideas into reality. Reach out to us
                 and let's discuss how we can accelerate your digital transformation journey.
@@ -112,11 +112,11 @@ const ContactSection = () => {
                 </div>
               ))}
             </div>
+            </div>
+          </AnimatedSection>
 
-          </div>
-
-          {/* Contact Form */}
-          <Card className="bg-card/50 backdrop-blur border-border/50">
+          <AnimatedSection delay={200}>
+          <Card className="bg-card border-border/60 shadow-card transition-[box-shadow] duration-300 hover:shadow-glow">
             <CardHeader>
               <CardTitle className="text-xl">Send us a Message</CardTitle>
             </CardHeader>
@@ -173,6 +173,7 @@ const ContactSection = () => {
               </form>
             </CardContent>
           </Card>
+          </AnimatedSection>
         </div>
       </div>
     </section>

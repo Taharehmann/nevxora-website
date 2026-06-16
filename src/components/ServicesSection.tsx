@@ -1,22 +1,30 @@
 import { Code, Smartphone, Brain, ShoppingCart, Users, CheckCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
-import { useEffect, useState } from "react";
+import AnimatedSection from "@/components/AnimatedSection";
+import { useEffect, useState, useRef, useCallback } from "react";
 
 const ServicesSection = () => {
   const [api, setApi] = useState<CarouselApi>();
+  const pauseUntilRef = useRef<number>(0);
 
-  // Auto-scroll functionality
+  // Pause auto-scroll for a duration (ms) on user interaction
+  const pauseAutoScroll = useCallback((ms = 6000) => {
+    pauseUntilRef.current = Date.now() + ms;
+  }, []);
+
+  // Auto-scroll functionality — respects pause
   useEffect(() => {
     if (!api) return;
 
     const interval = setInterval(() => {
+      if (Date.now() < pauseUntilRef.current) return; // paused
       if (api.canScrollNext()) {
         api.scrollNext();
       } else {
         api.scrollTo(0);
       }
-    }, 2000); // Auto-scroll every 2 seconds
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [api]);
@@ -80,21 +88,20 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-gradient-secondary">
+    <section id="services" className="py-12 sm:py-16 md:py-20 bg-gradient-secondary">
       <div className="container mx-auto px-4 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+        <AnimatedSection className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
             Our <span className="gradient-text">Services</span>
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             We specialize in delivering comprehensive software solutions that drive digital 
             transformation and accelerate business growth through innovative technology.
           </p>
-        </div>
+        </AnimatedSection>
 
-        {/* Services Carousel */}
-        <div className="relative max-w-6xl mx-auto">
+        <AnimatedSection delay={150}>
+          <div className="relative mx-auto max-w-6xl">
           <Carousel
             setApi={setApi}
             className="w-full"
@@ -107,14 +114,15 @@ const ServicesSection = () => {
               {services.map((service, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                   <Card 
-                    className="h-full bg-card/50 backdrop-blur border-border/50 hover:bg-card/80 transition-all duration-300 hover:shadow-card group"
+                    className="h-full bg-card/90 border-border/50 hover:bg-card transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-glow group cursor-pointer"
+                    onClick={() => pauseAutoScroll()}
                   >
                     <CardHeader className="pb-4">
                       <div className="flex items-center space-x-4 mb-4">
                         <div className="p-3 rounded-lg bg-gradient-primary group-hover:scale-110 transition-transform duration-300">
                           <service.icon className="w-6 h-6 text-primary-foreground" />
                         </div>
-                        <CardTitle className="text-xl font-bold text-foreground">
+                        <CardTitle className="text-base sm:text-lg md:text-xl font-bold text-foreground">
                           {service.title}
                         </CardTitle>
                       </div>
@@ -140,10 +148,11 @@ const ServicesSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-12 lg:-left-16" />
-            <CarouselNext className="hidden md:flex -right-12 lg:-right-16" />
+            <CarouselPrevious className="hidden md:flex -left-12 lg:-left-16" onClick={() => pauseAutoScroll()} />
+            <CarouselNext className="hidden md:flex -right-12 lg:-right-16" onClick={() => pauseAutoScroll()} />
           </Carousel>
-        </div>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );

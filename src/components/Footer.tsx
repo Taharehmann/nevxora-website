@@ -1,6 +1,6 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
-import nevxoraLogo from "@/assets/nevxora-logo.png";
+import Logo from "@/components/Logo";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -26,10 +26,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-3">
-              <img src={nevxoraLogo} alt="Nevxora Logo" className="h-8 w-8" />
-              <span className="text-xl font-bold gradient-text">Nevxora</span>
-            </div>
+            <Logo className="h-12" />
             <p className="text-sm text-muted-foreground font-medium">
               Digital Architects
             </p>

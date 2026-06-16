@@ -16,7 +16,7 @@ const PrivacyPolicy = () => {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-8 gradient-text">Privacy Policy</h1>
 
-          <div className="prose prose-slate dark:prose-invert max-w-none space-y-8">
+          <div className="prose prose-slate max-w-none space-y-8">
             <section>
               <p className="text-muted-foreground mb-6">
                 <strong>Last updated:</strong> {new Date().toLocaleDateString()}

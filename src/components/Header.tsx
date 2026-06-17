@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Logo from "@/components/Logo";
@@ -8,6 +8,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -28,10 +29,41 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close mobile menu on resize to desktop
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 768 && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+    window.addEventListener("resize", onResize, { passive: true });
+    return () => window.removeEventListener("resize", onResize);
+  }, [isMenuOpen]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
     setIsMenuOpen(false);
   };
+
+  const navItems = [
+    { id: "hero", label: "Home" },
+    { id: "services", label: "Services" },
+    { id: "about", label: "About" },
+    { id: "team", label: "Team" },
+    { id: "contact", label: "Contact" },
+  ];
 
   const navLinkClass =
     "text-muted-foreground hover:text-primary transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:after:w-full";
@@ -50,13 +82,7 @@ const Header = () => {
           <Logo onClick={() => scrollToSection("hero")} />
 
           <nav className="hidden items-center space-x-5 md:flex lg:space-x-8">
-            {[
-              { id: "hero", label: "Home" },
-              { id: "services", label: "Services" },
-              { id: "about", label: "About" },
-              { id: "team", label: "Team" },
-              { id: "contact", label: "Contact" },
-            ].map((item) => (
+            {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
@@ -92,60 +118,85 @@ const Header = () => {
             </Button>
           </div>
 
-          <button
-            className="text-foreground md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-2 md:hidden">
+            <button
+              onClick={toggleDarkMode}
+              className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card/80 text-muted-foreground transition-[border-color,color,box-shadow] duration-200 hover:border-primary/40 hover:text-primary"
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              id="dark-mode-toggle-mobile-header"
+            >
+              <Sun className={cn(
+                "absolute h-4 w-4 transition-[transform,opacity] duration-300",
+                isDark ? "rotate-90 scale-0 opacity-0" : "rotate-0 scale-100 opacity-100"
+              )} />
+              <Moon className={cn(
+                "absolute h-4 w-4 transition-[transform,opacity] duration-300",
+                isDark ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-0 opacity-0"
+              )} />
+            </button>
+            <button
+              className="relative flex h-10 w-10 items-center justify-center rounded-lg text-foreground transition-colors duration-200 hover:bg-muted"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMenuOpen}
+            >
+              <Menu className={cn(
+                "absolute h-5 w-5 transition-[transform,opacity] duration-300",
+                isMenuOpen ? "rotate-90 scale-0 opacity-0" : "rotate-0 scale-100 opacity-100"
+              )} />
+              <X className={cn(
+                "absolute h-5 w-5 transition-[transform,opacity] duration-300",
+                isMenuOpen ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-0 opacity-0"
+              )} />
+            </button>
+          </div>
         </div>
 
-        {isMenuOpen && (
-          <div className="border-t border-border py-4 md:hidden animate-fade-in">
-            <nav className="flex flex-col space-y-4">
-              {[
-                { id: "hero", label: "Home" },
-                { id: "services", label: "Services" },
-                { id: "about", label: "About" },
-                { id: "team", label: "Team" },
-                { id: "contact", label: "Contact" },
-              ].map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-left text-muted-foreground transition-colors hover:text-primary"
-                >
-                  {item.label}
-                </button>
-              ))}
-              <div className="mt-4 flex items-center gap-3">
-                <button
-                  onClick={toggleDarkMode}
-                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-card/80 text-muted-foreground transition-[border-color,color] duration-200 hover:border-primary/40 hover:text-primary"
-                  aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-                  id="dark-mode-toggle-mobile"
-                >
-                  <Sun className={cn(
-                    "absolute h-4 w-4 transition-[transform,opacity] duration-300",
-                    isDark ? "rotate-90 scale-0 opacity-0" : "rotate-0 scale-100 opacity-100"
-                  )} />
-                  <Moon className={cn(
-                    "absolute h-4 w-4 transition-[transform,opacity] duration-300",
-                    isDark ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-0 opacity-0"
-                  )} />
-                </button>
-                <Button
-                  onClick={() => scrollToSection("contact")}
-                  variant="gradient"
-                  className="flex-1"
-                >
-                  Get Started
-                </Button>
-              </div>
-            </nav>
-          </div>
-        )}
+        {/* Mobile menu with smooth animation */}
+        <div
+          ref={menuRef}
+          className={cn(
+            "md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ease-out",
+            isMenuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
+          )}
+        >
+          <nav className="flex flex-col space-y-1 border-t border-border py-4">
+            {navItems.map((item, index) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={cn(
+                  "rounded-lg px-3 py-3 text-left text-base font-medium text-muted-foreground transition-all duration-200 hover:bg-muted hover:text-primary",
+                  isMenuOpen && "animate-fade-in-up"
+                )}
+                style={{
+                  animationDelay: isMenuOpen ? `${index * 50}ms` : "0ms",
+                  animationFillMode: "forwards",
+                }}
+              >
+                {item.label}
+              </button>
+            ))}
+            <div
+              className={cn(
+                "mt-3 px-3 pt-3 border-t border-border/60",
+                isMenuOpen && "animate-fade-in-up"
+              )}
+              style={{
+                animationDelay: isMenuOpen ? `${navItems.length * 50}ms` : "0ms",
+                animationFillMode: "forwards",
+              }}
+            >
+              <Button
+                onClick={() => scrollToSection("contact")}
+                variant="gradient"
+                className="w-full min-h-[44px]"
+              >
+                Get Started
+              </Button>
+            </div>
+          </nav>
+        </div>
       </div>
     </header>
   );

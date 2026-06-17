@@ -70,43 +70,43 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-12 sm:py-16 md:py-20 bg-gradient-secondary">
       <div className="container mx-auto px-4 lg:px-8">
-        <AnimatedSection className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
+        <AnimatedSection className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 md:mb-6">
             Get in <span className="gradient-text">Touch</span>
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm xs:text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-2 sm:px-0">
             Ready to build something amazing? Let's discuss your project and bring your vision to life.
           </p>
         </AnimatedSection>
 
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 max-w-6xl mx-auto">
           <AnimatedSection delay={100}>
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
             <div>
-              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Let's Start a Conversation</h3>
-              <p className="text-muted-foreground leading-relaxed mb-8">
+              <h3 className="text-lg xs:text-xl sm:text-2xl font-bold mb-3 sm:mb-4 md:mb-6">Let's Start a Conversation</h3>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-6 sm:mb-8">
                 We're here to help you transform your ideas into reality. Reach out to us
                 and let's discuss how we can accelerate your digital transformation journey.
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {contactInfo.map((info, index) => (
-                <div key={index} className="flex items-center space-x-4">
-                  <div className="p-3 rounded-lg bg-gradient-primary">
-                    <info.icon className="w-5 h-5 text-primary-foreground" />
+                <div key={index} className="flex items-center space-x-3 sm:space-x-4">
+                  <div className="p-2.5 sm:p-3 rounded-lg bg-gradient-primary flex-shrink-0">
+                    <info.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground" />
                   </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">{info.label}</p>
+                  <div className="min-w-0">
+                    <p className="text-xs sm:text-sm text-muted-foreground">{info.label}</p>
                     {info.href ? (
                       <a
                         href={info.href}
-                        className="text-foreground font-medium hover:text-primary transition-colors"
+                        className="text-sm sm:text-base text-foreground font-medium hover:text-primary transition-colors truncate block"
                       >
                         {info.value}
                       </a>
                     ) : (
-                      <p className="text-foreground font-medium">{info.value}</p>
+                      <p className="text-sm sm:text-base text-foreground font-medium truncate">{info.value}</p>
                     )}
                   </div>
                 </div>
@@ -117,11 +117,11 @@ const ContactSection = () => {
 
           <AnimatedSection delay={200}>
           <Card className="bg-card border-border/60 shadow-card transition-[box-shadow] duration-300 hover:shadow-glow">
-            <CardHeader>
-              <CardTitle className="text-xl">Send us a Message</CardTitle>
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-lg sm:text-xl">Send us a Message</CardTitle>
             </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <CardContent className="p-4 pt-0 sm:p-6 sm:pt-0">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div>
                   <Input
                     type="text"
@@ -130,7 +130,7 @@ const ContactSection = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="bg-background/50 border-border"
+                    className="bg-background/50 border-border min-h-[44px] text-sm sm:text-base"
                   />
                 </div>
                 <div>
@@ -141,7 +141,7 @@ const ContactSection = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="bg-background/50 border-border"
+                    className="bg-background/50 border-border min-h-[44px] text-sm sm:text-base"
                   />
                 </div>
                 <div>
@@ -151,15 +151,15 @@ const ContactSection = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     required
-                    rows={6}
-                    className="bg-background/50 border-border resize-none"
+                    rows={5}
+                    className="bg-background/50 border-border resize-none text-sm sm:text-base"
                   />
                 </div>
                 <Button
                   type="submit"
                   disabled={isSubmitting}
                   variant="gradient"
-                  className="w-full"
+                  className="w-full min-h-[44px] active:scale-[0.98] transition-transform"
                 >
                   {isSubmitting ? (
                     "Sending..."

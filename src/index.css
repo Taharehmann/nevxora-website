@@ -110,6 +110,7 @@ All colors MUST be HSL.
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
   }
 
   * {
@@ -123,7 +124,6 @@ All colors MUST be HSL.
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
-    overscroll-behavior-y: contain;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -136,6 +136,16 @@ All colors MUST be HSL.
 
   .glow-effect {
     box-shadow: var(--shadow-glow);
+  }
+
+  /* Ensure all interactive elements have comfortable touch targets on mobile */
+  @media (pointer: coarse) {
+    button,
+    a,
+    [role="button"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
   }
 }
 
@@ -191,7 +201,54 @@ All colors MUST be HSL.
     will-change: background-position;
   }
 
+  /* Reduce background animation complexity on mobile for performance */
+  @media (max-width: 640px) {
+    .hero-aurora {
+      animation-duration: 30s;
+    }
+    .hero-shimmer {
+      animation: none;
+    }
+  }
+
+  /* Prefer reduced motion: disable all decorative animations */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-aurora,
+    .hero-shimmer {
+      animation: none;
+    }
+  }
+
   .section-divider {
     @apply h-px w-full bg-gradient-to-r from-transparent via-border to-transparent;
+  }
+
+  /* Mobile menu slide animation */
+  @keyframes menu-slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+      max-height: 0;
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 500px;
+    }
+  }
+
+  .mobile-menu-enter {
+    animation: menu-slide-down 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    overflow: hidden;
+  }
+
+  /* Swipe hint for carousel on mobile */
+  @keyframes swipe-hint {
+    0%, 100% { transform: translateX(0); opacity: 0.6; }
+    50% { transform: translateX(-12px); opacity: 1; }
+  }
+
+  .swipe-hint {
+    animation: swipe-hint 2s ease-in-out 1.5s 2;
   }
 }

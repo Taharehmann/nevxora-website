@@ -73,24 +73,24 @@ const TeamSection = () => {
   return (
     <section id="team" className="py-12 sm:py-16 md:py-20 bg-gradient-secondary">
       <div className="container mx-auto px-4 lg:px-8">
-        <AnimatedSection className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
+        <AnimatedSection className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 md:mb-6">
             Our <span className="gradient-text">Team</span>
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-sm xs:text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-2 sm:px-0">
             Meet the experts behind Nevxora — passionate professionals dedicated to
             delivering exceptional software solutions.
           </p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
           {teamMembers.map((member, index) => (
             <AnimatedSection key={member.name} delay={index * 100}>
               <Card
                 className="border-primary/25 bg-card shadow-card transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-glow h-full"
               >
-                <CardContent className="p-4 sm:p-6 text-center">
-                  <div className="mb-6 overflow-hidden rounded-xl border border-border/60">
+                <CardContent className="p-3 xs:p-4 sm:p-6 text-center">
+                  <div className="mb-4 sm:mb-6 overflow-hidden rounded-xl border border-border/60">
                     <img
                       src={member.image}
                       alt={member.name}
@@ -99,20 +99,20 @@ const TeamSection = () => {
                     />
                   </div>
 
-                  <h3 className="text-lg sm:text-xl font-bold text-foreground">{member.name}</h3>
-                  <p className="mt-1 text-sm font-bold uppercase tracking-wide text-primary">
+                  <h3 className="text-base xs:text-lg sm:text-xl font-bold text-foreground">{member.name}</h3>
+                  <p className="mt-1 text-xs sm:text-sm font-bold uppercase tracking-wide text-primary">
                     {member.role}
                   </p>
-                  <p className="mt-1 text-sm text-muted-foreground">{member.experience}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-1 text-xs sm:text-sm text-muted-foreground">{member.experience}</p>
+                  <p className="mt-3 sm:mt-4 text-xs sm:text-sm leading-relaxed text-muted-foreground">
                     {member.bio}
                   </p>
 
-                  <div className="mt-6 flex flex-col gap-2">
+                  <div className="mt-4 sm:mt-6 flex flex-wrap justify-center gap-1.5 sm:gap-2">
                     {member.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="rounded-full border border-border bg-background px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm font-medium text-foreground"
+                        className="rounded-full border border-border bg-background px-2.5 py-1 text-[10px] xs:text-xs sm:px-4 sm:py-2 sm:text-sm font-medium text-foreground whitespace-nowrap"
                       >
                         {skill}
                       </span>

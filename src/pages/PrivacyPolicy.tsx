@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 lg:px-8 py-8">
+      <div className="container mx-auto px-4 lg:px-8 py-6 sm:py-8">
         <Link
           to="/"
           className="inline-flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors mb-8"
@@ -14,9 +14,9 @@ const PrivacyPolicy = () => {
         </Link>
 
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold mb-8 gradient-text">Privacy Policy</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 gradient-text">Privacy Policy</h1>
 
-          <div className="prose prose-slate max-w-none space-y-8">
+          <div className="prose prose-slate max-w-none space-y-6 sm:space-y-8">
             <section>
               <p className="text-muted-foreground mb-6">
                 <strong>Last updated:</strong> {new Date().toLocaleDateString()}
@@ -28,21 +28,21 @@ const PrivacyPolicy = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-foreground">Information We Collect</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-foreground">Information We Collect</h2>
 
-              <h3 className="text-xl font-medium mb-3 text-foreground">Personal Information</h3>
-              <p className="text-foreground leading-relaxed mb-4">
+              <h3 className="text-lg sm:text-xl font-medium mb-2 sm:mb-3 text-foreground">Personal Information</h3>
+              <p className="text-sm sm:text-base text-foreground leading-relaxed mb-3 sm:mb-4">
                 We may collect personal information that you voluntarily provide to us, including:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-foreground">
+              <ul className="list-disc pl-4 sm:pl-6 space-y-1.5 sm:space-y-2 text-sm sm:text-base text-foreground">
                 <li>Name and contact information (email address, phone number)</li>
                 <li>Company information and job title</li>
                 <li>Project requirements and specifications</li>
                 <li>Communication preferences</li>
               </ul>
 
-              <h3 className="text-xl font-medium mb-3 mt-6 text-foreground">Automatically Collected Information</h3>
-              <p className="text-foreground leading-relaxed mb-4">
+              <h3 className="text-lg sm:text-xl font-medium mb-2 sm:mb-3 mt-4 sm:mt-6 text-foreground">Automatically Collected Information</h3>
+              <p className="text-sm sm:text-base text-foreground leading-relaxed mb-3 sm:mb-4">
                 When you visit our website, we may automatically collect certain information, including:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-foreground">
@@ -54,7 +54,7 @@ const PrivacyPolicy = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-foreground">How We Use Your Information</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-foreground">How We Use Your Information</h2>
               <p className="text-foreground leading-relaxed mb-4">
                 We use the information we collect for the following purposes:
               </p>
@@ -69,7 +69,7 @@ const PrivacyPolicy = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-foreground">Information Sharing and Disclosure</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-foreground">Information Sharing and Disclosure</h2>
               <p className="text-foreground leading-relaxed mb-4">
                 We do not sell, trade, or otherwise transfer your personal information to third parties, except in the following circumstances:
               </p>
@@ -82,14 +82,14 @@ const PrivacyPolicy = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-foreground">Data Security</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-foreground">Data Security</h2>
               <p className="text-foreground leading-relaxed">
                 We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet or electronic storage is 100% secure.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-foreground">Your Rights</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-foreground">Your Rights</h2>
               <p className="text-foreground leading-relaxed mb-4">
                 Depending on your location, you may have the following rights regarding your personal information:
               </p>
@@ -104,35 +104,35 @@ const PrivacyPolicy = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-foreground">Cookies</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-foreground">Cookies</h2>
               <p className="text-foreground leading-relaxed">
                 Our website uses cookies to enhance your browsing experience and analyze website traffic. You can control cookie preferences through your browser settings. Disabling cookies may affect the functionality of our website.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-foreground">Third-Party Services</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-foreground">Third-Party Services</h2>
               <p className="text-foreground leading-relaxed">
                 Our website may contain links to third-party websites or integrate with third-party services. We are not responsible for the privacy practices of these third parties. We encourage you to review their privacy policies.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-foreground">Children's Privacy</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-foreground">Children's Privacy</h2>
               <p className="text-foreground leading-relaxed">
                 Our services are not intended for children under 18 years of age. We do not knowingly collect personal information from children under 18. If you become aware that we have collected such information, please contact us immediately.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-foreground">Changes to This Privacy Policy</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-foreground">Changes to This Privacy Policy</h2>
               <p className="text-foreground leading-relaxed">
                 We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date. Your continued use of our services after changes constitutes acceptance of the updated policy.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-foreground">Contact Us</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-foreground">Contact Us</h2>
               <p className="text-foreground leading-relaxed mb-4">
                 If you have any questions about this Privacy Policy or our privacy practices, please contact us:
               </p>

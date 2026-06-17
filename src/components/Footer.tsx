@@ -22,31 +22,34 @@ const Footer = () => {
 
   return (
     <footer className="bg-background border-t border-border">
-      <div className="container mx-auto px-4 lg:px-8 py-12">
-        <div className="grid md:grid-cols-3 gap-8">
+      <div className="container mx-auto px-4 lg:px-8 py-8 sm:py-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           {/* Brand Section */}
-          <div className="space-y-4">
-            <Logo className="h-12" />
-            <p className="text-sm text-muted-foreground font-medium">
+          <div className="sm:col-span-2 md:col-span-1">
+            <Logo className="h-10 sm:h-12" />
+            <p className="mt-2 text-xs sm:text-sm text-muted-foreground font-medium">
               Digital Architects
             </p>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-xs">
               Building the future with innovative software solutions. We architect tomorrow's technology today.
             </p>
           </div>
 
           {/* Services Section */}
           <div>
-            <h3 className="font-semibold mb-4 text-foreground">Services</h3>
-            <ul className="space-y-2">
+            <h3 className="font-semibold mb-2.5 text-foreground text-sm sm:text-base">Services</h3>
+            <ul className="space-y-0.5">
               {services.map((service, index) => (
-                <li key={index}>
-                  <button
+                <li key={index} className="leading-tight">
+                  <span
+                    role="button"
+                    tabIndex={0}
                     onClick={() => scrollToSection("services")}
-                    className="text-muted-foreground hover:text-primary transition-colors text-left"
+                    onKeyDown={(e) => e.key === "Enter" && scrollToSection("services")}
+                    className="inline text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                   >
                     {service}
-                  </button>
+                  </span>
                 </li>
               ))}
             </ul>
@@ -54,59 +57,63 @@ const Footer = () => {
 
           {/* Contact Section */}
           <div>
-            <h3 className="font-semibold mb-4 text-foreground">Get in Touch</h3>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-primary" />
-                <a
-                  href="mailto:info@nevxora.com"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  info@nevxora.com
-                </a>
+            <h3 className="font-semibold mb-2.5 text-foreground text-sm sm:text-base">Get in Touch</h3>
+            <div className="space-y-1">
+              <div className="flex items-start gap-2">
+                <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary flex-shrink-0 mt-[3px]" />
+                <span className="text-xs sm:text-sm text-muted-foreground leading-tight">
+                  <a href="mailto:info@nevxora.com" className="hover:text-primary transition-colors">
+                    info@nevxora.com
+                  </a>
+                </span>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 text-primary" />
-                <a
-                  href="tel:+92 3229657649"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  +92 3229657649
-                </a>
+              <div className="flex items-start gap-2">
+                <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary flex-shrink-0 mt-[3px]" />
+                <span className="text-xs sm:text-sm text-muted-foreground leading-tight">
+                  <a href="tel:+923229657649" className="hover:text-primary transition-colors">
+                    +92 3229657649
+                  </a>
+                </span>
               </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-4 h-4 text-primary" />
-                <span className="text-muted-foreground">Islamabad | Pakistan</span>
+              <div className="flex items-start gap-2">
+                <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary flex-shrink-0 mt-[3px]" />
+                <span className="text-xs sm:text-sm text-muted-foreground leading-tight">Islamabad | Pakistan</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-border mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-sm text-muted-foreground">
+        <div className="border-t border-border mt-6 pt-5">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
+            <p className="text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
               © {currentYear} Nevxora. All rights reserved.
             </p>
-            <div className="flex space-x-6">
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
               <Link
                 to="/privacy-policy"
-                className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 Privacy Policy
               </Link>
-              <button
+              <span
+                role="button"
+                tabIndex={0}
                 onClick={() => scrollToSection("about")}
-                className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                onKeyDown={(e) => e.key === "Enter" && scrollToSection("about")}
+                className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
               >
                 Terms of Service
-              </button>
-              <button
+              </span>
+              <span
+                role="button"
+                tabIndex={0}
                 onClick={() => scrollToSection("contact")}
-                className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                onKeyDown={(e) => e.key === "Enter" && scrollToSection("contact")}
+                className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
               >
                 Contact
-              </button>
+              </span>
             </div>
           </div>
         </div>

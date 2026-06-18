@@ -127,7 +127,7 @@ const HeroSection = () => {
       <button
         type="button"
         onClick={() => scrollToSection("services")}
-        className="absolute bottom-6 sm:bottom-8 left-1/2 z-20 -translate-x-1/2 flex items-center justify-center w-10 h-10 rounded-full animate-bounce text-muted-foreground transition-colors hover:text-primary hover:bg-primary/10 pointer-events-auto cursor-pointer"
+        className="absolute bottom-6 sm:bottom-8 inset-x-0 mx-auto z-20 flex items-center justify-center w-10 h-10 rounded-full animate-bounce text-muted-foreground transition-colors hover:text-primary hover:bg-primary/10 pointer-events-auto cursor-pointer"
         aria-label="Scroll to services"
       >
         <ChevronDown className="h-5 w-5 sm:h-6 sm:w-6" />
